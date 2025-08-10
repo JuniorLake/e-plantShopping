@@ -278,6 +278,8 @@ function ProductList({ onHomeClick }) {
     }, 3000);
   };
 
+  
+
   return (
     <div>
       <div className="navbar" style={styleObj}>
@@ -304,12 +306,15 @@ function ProductList({ onHomeClick }) {
           <div>
             <a href="#" onClick={handleCartClick} style={styleA}>
               <h1 className="cart">
+                
+                
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
                   height="68"
                   width="68"
                 >
+                  <text x="5" y="15" fill="red">I love SVG!</text>  
                   <rect width="156" height="156" fill="none"></rect>
                   <circle cx="80" cy="216" r="12"></circle>
                   <circle cx="184" cy="216" r="12"></circle>
@@ -321,6 +326,7 @@ function ProductList({ onHomeClick }) {
                     strokeLinejoin="round"
                     strokeWidth="2"
                   ></path>
+    
                 </svg>
               </h1>
             </a>
