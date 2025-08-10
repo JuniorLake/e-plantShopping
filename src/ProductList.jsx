@@ -307,14 +307,14 @@ function ProductList({ onHomeClick }) {
             <a href="#" onClick={handleCartClick} style={styleA}>
               <h1 className="cart">
                 
-                
+                {/* <text className="cart_quantity_count">{cart}</text> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
                   height="68"
                   width="68"
                 >
-                  {/*<text className="cart_quantity_count">{cart}</text>*/
+                   
                   <rect width="156" height="156" fill="none">
                      
                   </rect>
