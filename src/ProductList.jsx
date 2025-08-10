@@ -314,7 +314,7 @@ function ProductList({ onHomeClick }) {
                   height="68"
                   width="68"
                 >
-                  <text x="5" y="15" fill="red">I love SVG!</text>  
+                   
                   <rect width="156" height="156" fill="none"></rect>
                   <circle cx="80" cy="216" r="12"></circle>
                   <circle cx="184" cy="216" r="12"></circle>
@@ -326,7 +326,7 @@ function ProductList({ onHomeClick }) {
                     strokeLinejoin="round"
                     strokeWidth="2"
                   ></path>
-    
+                  <text x="5" y="15" fill="red">I love SVG!</text>   
                 </svg>
               </h1>
             </a>
