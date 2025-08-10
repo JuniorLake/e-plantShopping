@@ -112,15 +112,15 @@ function ProductList({ onHomeClick }) {
   };
 
   // Dispatch action and show a fixed notification for 3 seconds
-  const handleAddToCart = (plant) => {
-    console.log("Added to cart:", plant);
+  const handleAddToCart = (product) => {
+    console.log("Added to cart:", product);
     dispatch(addItem(product)); // Dispatch the action to add the product to the cart (Redux action)
     setAddedToCart((prevState) => ({ // Update the local state to reflect that the product has been added
         ...prevState, // Spread the previous state to retain existing entries
         [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
     }));
     
-    setNotification(`${plant.name} added to cart!`);
+    setNotification(`${product.name} added to cart!`);
     setTimeout(() => {
       setNotification('');
     }, 3000);
