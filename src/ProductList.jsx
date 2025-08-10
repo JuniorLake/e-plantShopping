@@ -314,7 +314,7 @@ function ProductList({ onHomeClick }) {
                   height="68"
                   width="68"
                 >
-                  <text className="cart_quantity_count">{cart}</text> 
+                  {/*<text className="cart_quantity_count">{cart}</text>*/
                   <rect width="156" height="156" fill="none">
                      
                   </rect>
