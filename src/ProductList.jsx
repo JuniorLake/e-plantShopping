@@ -200,30 +200,34 @@ function ProductList({ onHomeClick }) {
 
       {!showCart ? (
         <div className="product-grid">
-          {plantsArray.map((category, catIndex) => (
-            <div key={`${category.category}-${catIndex}`} className="category">
-              <h2 className="category-title">{category.category}</h2>
-              <div className="category-plants">
-                {category.plants.map((plant, index) => (
-                  <div key={`${plant.name}-${index}`} className="plant-card">
-                    <img
-                      src={plant.image}
-                      alt={plant.name}
-                      className="plant-image"
+          {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
+            <div key={index}> {/* Unique key for each category div */}
+                <h1>
+                <div>{category.category}</div> {/* Display the category name */}
+                </h1>
+                <div className="product-list"> {/* Container for the list of plant cards */}
+                {category.plants.map((plant, plantIndex) => ( // Loop through each plant in the current category
+                    <div className="product-card" key={plantIndex}> {/* Unique key for each plant card */}
+                    <img 
+                        className="product-image" 
+                        src={plant.image} // Display the plant image
+                        alt={plant.name} // Alt text for accessibility
                     />
-                    <div className="plant-details">
-                      <h3>{plant.name}</h3>
-                      <p>{plant.description}</p>
-                      <p className="plant-cost">{plant.cost}</p>
-                      <button onClick={() => handleAddToCart(plant)}>
+                    <div className="product-title">{plant.name}</div> {/* Display plant name */}
+                    {/* Display other plant details like description and cost */}
+                    <div className="product-description">{plant.description}</div> {/* Display plant description */}
+                    <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
+                    <button
+                        className="product-button"
+                        onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                    >
                         Add to Cart
-                      </button>
+                    </button>
                     </div>
-                  </div>
                 ))}
-              </div>
+                </div>
             </div>
-          ))}
+            ))}
         </div>
       ) : (
         <CartItem onContinueShopping={handleContinueShopping} />
