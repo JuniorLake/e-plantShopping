@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 import CartItem from './CartItem';
 import './ProductList.css';
+import { amountInCart } from './ProductList';
+
 
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
   const [notification, setNotification] = useState(''); // Notification state
-  const [amountInCart, setAmountInCart] = useState(3);
+  
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
 
@@ -273,7 +275,6 @@ function ProductList({ onHomeClick }) {
       quantity: 1,
       image: plant.image
     }));
-    setAmountInCart(amountInCart + 1);
     setNotification(`${plant.name} added to cart!`);
     setTimeout(() => {
       setNotification('');
