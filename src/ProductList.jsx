@@ -272,6 +272,7 @@ function ProductList({ onHomeClick }) {
       quantity: 1,
       image: plant.image
     }));
+    cart = cart + 1;
     setNotification(`${plant.name} added to cart!`);
     setTimeout(() => {
       setNotification('');
@@ -307,7 +308,7 @@ function ProductList({ onHomeClick }) {
             <a href="#" onClick={handleCartClick} style={styleA}>
               <h1 className="cart">
                 
-                <text className="cart_quantity_count">{23}</text>
+                <text className="cart_quantity_count">{cart}</text>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
