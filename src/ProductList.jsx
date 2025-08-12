@@ -273,7 +273,7 @@ function ProductList({ onHomeClick }) {
       quantity: 1,
       image: plant.image
     }));
-    {/*setAmountInCart(amountInCart + 1);*/}
+    setAmountInCart({amountInCart} + 1);*
     setNotification(`${plant.name} added to cart!`);
     setTimeout(() => {
       setNotification('');
