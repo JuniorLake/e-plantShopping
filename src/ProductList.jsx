@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 import CartItem from './CartItem';
 import './ProductList.css';
-import { amountInCart } from './ProductList';
+import { amountInCart } from './Cart';
 
 
 function ProductList({ onHomeClick }) {
