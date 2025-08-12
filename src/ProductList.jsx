@@ -7,6 +7,7 @@ import './ProductList.css';
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
   const [notification, setNotification] = useState(''); // Notification state
+  const [amountInCart, setAmountInCart] = useState(0);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
 
@@ -272,7 +273,7 @@ function ProductList({ onHomeClick }) {
       quantity: 1,
       image: plant.image
     }));
-    cart = cart + 1;
+    setAmountInCart(amountInCart + 1);
     setNotification(`${plant.name} added to cart!`);
     setTimeout(() => {
       setNotification('');
@@ -308,7 +309,7 @@ function ProductList({ onHomeClick }) {
             <a href="#" onClick={handleCartClick} style={styleA}>
               <h1 className="cart">
                 
-                <text className="cart_quantity_count">{cart}</text>
+                <text className="cart_quantity_count">{am}</text>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
