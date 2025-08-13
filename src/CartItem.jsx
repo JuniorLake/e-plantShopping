@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
-
 import './CartItem.css';
 
-const CartItem = ({ onContinueShopping }) => {
+const CartItem = ({ onContinueShopping , setAmountInCart, amountInCart}) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
-  const [amountInCart, setAmountInCart] = useState(3);
+
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
@@ -19,26 +18,26 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Increment quantity for a specific item
   const handleIncrement = (item) => {
-    setAmountInCart(amountInCart + 1);
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
+    setAmountInCart(amountInCart + 1);
   };
 
   // Decrement quantity for a specific item
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
-        setAmountInCart(amountInCart - 1);
         dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+        setAmountInCart(amountInCart - 1);
     } else {
       dispatch(removeItem({ name: item.name }));
-      if (amountInCart != 0){
-        setAmountInCart(amountInCart - 1);
-      }
+      setAmountInCart(amountInCart - item.quantity);
     }
   };
 
   // Remove an item from the cart
   const handleRemove = (item) => {
     dispatch(removeItem({ name: item.name }));
+    setAmountInCart(amountInCart - item.quantity);
+
   };
 
   // Calculate subtotal for an item (unit price * quantity)

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 import CartItem from './CartItem';
 import './ProductList.css';
-import { amountInCart } from './Cart';
+
 
 
 function ProductList({ onHomeClick }) {
@@ -12,6 +12,7 @@ function ProductList({ onHomeClick }) {
   
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
+  const [amountInCart, setAmountInCart] = useState(0);
 
   const plantsArray = [
         {
@@ -269,6 +270,7 @@ function ProductList({ onHomeClick }) {
   const handleAddToCart = (plant) => {
     console.log("Added to cart:", plant);
     const price = parseFloat(plant.cost.replace('$', ''));
+    setAmountInCart(amountInCart + 1);
     dispatch(addItem({
       name: plant.name,
       price: price,
@@ -392,7 +394,7 @@ function ProductList({ onHomeClick }) {
             ))}
         </div>
       ) : (
-        <CartItem onContinueShopping={handleContinueShopping} />
+        <CartItem onContinueShopping={handleContinueShopping} setAmountInCart={setAmountInCart} amountInCart={amountInCart}/>
       )}
     </div>
   );
