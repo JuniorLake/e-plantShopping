@@ -283,7 +283,23 @@ function ProductList({ onHomeClick }) {
     }, 3000);
   };
 
+  const conditionButton = (plantName) => {
+    const existingItem = cart.find(item => item.name === plantName);
+    if (existingItem) {
+        return "pressed-product-button";
+      } else {
+        return "product-button";
+      }
+  }
   
+  const disabledConditionButton = (plantName) => {
+    const existingItem = cart.find(item => item.name === plantName);
+    if (existingItem) {
+        return true;
+      } else {
+        return false;
+      }
+  }
 
   return (
     <div>
@@ -366,7 +382,7 @@ function ProductList({ onHomeClick }) {
         <div className="product-grid">
           {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
             <div key={index}> {/* Unique key for each category div */}
-                <h1>
+                <h1 className="category-title">
                 <div>{category.category}</div> {/* Display the category name */}
                 </h1>
                 <div className="product-list"> {/* Container for the list of plant cards */}
@@ -382,8 +398,9 @@ function ProductList({ onHomeClick }) {
                     <div className="product-description">{plant.description}</div> {/* Display plant description */}
                     <div className="product-cost">{plant.cost}</div> {/* Display plant cost */}
                     <button
-                        className="product-button"
-                        onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                        className={conditionButton(plant.name)}
+                        onClick={() => handleAddToCart(plant) } // Handle adding plant to cart
+                        disabled={disabledConditionButton(plant.name)}
                     >
                         Add to Cart
                     </button>
